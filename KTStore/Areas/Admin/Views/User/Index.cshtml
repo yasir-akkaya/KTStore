@@ -1,0 +1,68 @@
+﻿@model IEnumerable<KTStore.Models.ApplicationUser>;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="card p-4">
+    <h3>User List</h3>
+    <br />
+    <p>@TempData["Message"]</p>
+    <p>
+        <a class="btn btn-success btn-sm float-end" asp-area="Identity" asp-page="/Account/Register" >Login/ Register</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Role)
+                </th>
+                
+                <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Balance) TL
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </th>
+                    <td class="px-2">
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id=" @item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,53 @@
+﻿@model KTStore.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="card p-4">
+
+    <p>
+        <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-left"></i> Back To List </a>
+    </p>
+    <h3>Create New Category</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-area="Admin" asp-controller="Category" asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" class="form-control" type="file" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+
+                <div class="form-check form-switch mt-2">
+                    <label asp-for="Status" class="control-label">Status</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" asp-for="Status" data-val="true" value="true">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create Category" class="btn btn-success btn-lg mt-2" />
+                </div>
+            </form>
+            <p class="fw-bolder mt-4">@TempData["Message"]</p>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
